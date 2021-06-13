@@ -1,5 +1,7 @@
 {
   "name": "alcas-app",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }
