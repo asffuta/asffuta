@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'alcas-app',
+  appName: 'asffuta-bs',
   webDir: 'build',
   bundledWebRuntime: false
 };
