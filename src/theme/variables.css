@@ -1,6 +1,16 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+@font-face {
+  font-family: Overlock;
+  src: url(./Fonts/Overlock-Regular.ttf);
+}
+
+@font-face {
+  font-family: Baloo;
+  src: url(./Fonts/BalooTamma-Regular.ttf);
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
@@ -74,6 +84,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+  --ion-font-family: Overlock;
 }
 
 @media (prefers-color-scheme: dark) {
