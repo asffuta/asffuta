@@ -50,8 +50,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "release": "ionic capacitor copy android & cd android & gradlew clean & gradlew assembleRelease & cd ..",
-    "keysign": "jarsigner -keystore release.kys asffuta.apk",
+    "resources": "cordova-res --skip-config --copy android",
+    "release": "ionic capacitor copy android & cd android & gradlew clean & gradlew assembleDebug & cd ..",
+    "keysign": "jarsigner -keystore release.kys android/app/build/outputs/debug/app-debug.apk",
     "apk": "npm run release & npm run keysign"
   },
   "eslintConfig": {
@@ -75,6 +76,7 @@
   "description": "An Ionic project",
   "devDependencies": {
     "@capacitor/cli": "3.0.1",
-    "@types/luxon": "^1.27.0"
+    "@types/luxon": "^1.27.0",
+    "cordova-res": "^0.15.3"
   }
 }

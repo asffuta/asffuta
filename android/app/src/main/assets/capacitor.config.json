@@ -1,6 +1,6 @@
 {
 	"appId": "com.stacksail.asffuta",
-	"appName": "asffuta-bs",
+	"appName": "asffuta",
 	"webDir": "build",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": true
 }
