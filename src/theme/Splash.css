@@ -1,0 +1,9 @@
+.splash-box {
+  margin-top: 35vh;
+}
+
+.splash-box .logo {
+  margin: 0;
+  margin-bottom: 30vh;
+  display: block;
+}

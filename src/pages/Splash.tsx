@@ -14,9 +14,9 @@ export default class Splash extends Component<{}, { render: JSX.Element }> {
   public componentDidMount() {
     setTimeout(() => {
       this.setState({
-        render: <Redirect to="/home" />,
+        render: <Redirect to="/welcome" />,
       });
-    }, 5000);
+    }, 3000);
   }
 
   public render() {
