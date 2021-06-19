@@ -11,6 +11,11 @@ http://ionicframework.com/docs/theming/ */
   src: url(./Fonts/BalooTamma-Regular.ttf);
 }
 
+@font-face {
+  font-family: Poppins;
+  src: url(./Fonts/Poppins-Regular.otf);
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
@@ -30,7 +35,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-secondary-tint: #50c8ff;
 
   /** tertiary **/
-  --ion-color-tertiary: #5260ff;
+  --ion-color-tertiary: #5261ff00;
   --ion-color-tertiary-rgb: 82, 96, 255;
   --ion-color-tertiary-contrast: #ffffff;
   --ion-color-tertiary-contrast-rgb: 255, 255, 255;
@@ -84,7 +89,9 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
-  --ion-font-family: Overlock;
+
+  /** configurations */
+  --ion-font-family: Poppins;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -244,4 +251,37 @@ http://ionicframework.com/docs/theming/ */
 
     --ion-card-background: #1e1e1e;
   }
+}
+
+.button {
+  text-transform: capitalize;
+}
+
+.center {
+  text-align: center;
+  justify-content: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+body {
+  font-size: .9em;
+}
+
+a {
+  color: var(--ion-color-warning);
+  text-decoration: none;
+  vertical-align: bottom;
+}
+
+.small {
+  font-size: .8em;
+}
+
+.logo {
+  margin: 35%;
+  margin-top: 15%;
+  margin-bottom: 15%;
 }
