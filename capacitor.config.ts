@@ -1,10 +1,10 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'asffuta-bs',
+  appId: 'com.stacksail.asffuta',
+  appName: 'asffuta',
   webDir: 'build',
-  bundledWebRuntime: false
+  bundledWebRuntime: true
 };
 
 export default config;
