@@ -1,10 +1,23 @@
 .content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+}
+
+.boxed {
+  margin-top: 15vh;
+}
+
+.image {
+  width: 80%
+}
+
+.button svg {
+  margin-left: 0.5em;
 }
