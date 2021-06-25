@@ -18,7 +18,7 @@ export default class Home extends Component<{}, HomeState> {
   public componentDidMount() {
     setStateInterval(this, {
       curDate: datef("LLLL d, y"),
-      curTime: datef("t a:s"),
+      curTime: datef("t a"),
     });
   }
 

@@ -1,5 +1,7 @@
+import axios from "axios";
 import { DateTime } from "luxon";
-import { Component } from "react";
+import { Component, useState } from "react";
+import { xml2js } from "xml-js";
 
 export const datef = (format: string) =>
   DateTime.fromJSDate(new Date()).toFormat(format);
@@ -16,5 +18,17 @@ export function setStateInterval(
   interval = 50
 ) {
   setInterval(() => component.setState(states), interval);
-  return (component.state = states || {});
 }
+
+export const getOutlines = () => {
+  return axios
+    .get(require("./data.xml").default)
+    .then((res) => (xml2js(res.data, { compact: true }) as any).table.rows);
+};
+
+export const withHook = (Component: any, Hook: any = useState) => {
+  return (props: any) => {
+    const params = Hook();
+    return <Component {...props} params={params} />;
+  };
+};

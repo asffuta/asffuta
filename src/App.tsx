@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import Home from "./pages/Home";
-import Splash from "./pages/Splash";
 import Welcome from "./pages/Welcome";
 import Study from "./pages/Study";
 
@@ -32,17 +31,12 @@ export default class App extends Component {
       <IonApp>
         <IonReactRouter>
           <IonRouterOutlet>
-            <Route exact path="/study">
-              <Study />
-            </Route>
-            <Route exact path="/welcome">
-              <Welcome />
-            </Route>
+            <Route path="/study/:id" children={<Study />} />
             <Route exact path="/home">
               <Home />
             </Route>
             <Route exact path="/">
-              <Splash />
+              <Welcome />
             </Route>
           </IonRouterOutlet>
         </IonReactRouter>
