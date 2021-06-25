@@ -1,23 +1,11 @@
 import axios from "axios";
 import { DateTime } from "luxon";
-import { Component, useState } from "react";
+import { useState } from "react";
 import { xml2js } from "xml-js";
 
-export const datef = (format: string) =>
-  DateTime.fromJSDate(new Date()).toFormat(format);
-
-export function setStateInterval(
-  component: Component,
-  states: {}
-    | ((
-        prevState: Readonly<{}>,
-        props: Readonly<{}>
-      ) => {} | Pick<{}, never> | null)
-    | Pick<{}, never>
-    | null,
-  interval = 50
-) {
-  setInterval(() => component.setState(states), interval);
+export function datef(format: string) {
+  const CDATE = DateTime.fromJSDate(new Date());
+  return CDATE.toFormat(format);
 }
 
 export const getOutlines = () => {

@@ -6,10 +6,11 @@ import { getOutlines } from "../utils";
 import { CgArrowDownO } from "react-icons/cg";
 import "../theme/Study.css";
 
-export default class StudyCards extends Component<HomeState> {
+export default class StudyCards extends Component {
+  
   public studies: JSX.Element[] = [];
-  constructor(props: any) {
-    super(props);
+
+  public componentDidMount() {
     getOutlines().then((rows: any) => {
       for (let row in rows) {
         for (let data of rows[row]) {
@@ -17,6 +18,7 @@ export default class StudyCards extends Component<HomeState> {
           this.studies.push(<StudyCard key={props[0]._text} {...props} />);
         }
       }
+      this.forceUpdate();
     });
   }
 
@@ -31,14 +33,7 @@ export default class StudyCards extends Component<HomeState> {
           </IonGrid>
           <IonGrid>
             <IonCol pull="-8">
-              <Link
-                to="#scroll"
-                onClick={() => {
-                  document
-                    .getElementById("scroll")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
+              <Link to="#scroll" onClick={this.handleScroll}>
                 Last <CgArrowDownO />
               </Link>
             </IonCol>
@@ -50,5 +45,9 @@ export default class StudyCards extends Component<HomeState> {
         <div id="scroll"></div>
       </IonGrid>
     );
+  }
+
+  public handleScroll() {
+    document.getElementById("scroll")?.scrollIntoView({ behavior: "smooth" });
   }
 }
