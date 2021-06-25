@@ -21,6 +21,7 @@
     "@types/react-dom": "^16.9.10",
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
+    "axios": "^0.21.1",
     "ionicons": "^5.4.0",
     "luxon": "^1.21.3",
     "react": "^17.0.1",
@@ -43,7 +44,8 @@
     "workbox-range-requests": "^5.1.4",
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
-    "workbox-streams": "^5.1.4"
+    "workbox-streams": "^5.1.4",
+    "xml-js": "^1.6.11"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,7 +54,8 @@
     "eject": "react-scripts eject",
     "resources": "cordova-res --skip-config --copy android",
     "release": "ionic capacitor copy android & cd android & gradlew clean & gradlew assembleDebug & cd ..",
-    "keysign": "jarsigner -keystore release.kys android/app/build/outputs/debug/app-debug.apk",
+    "keygen": "keytool -genkey -v -keystore release.kys -alias alias_name -keyalg RSA -keysize 2048 -validity 10000",
+    "keysign": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release.kys android/app/build/outputs/apk/debug/app-debug.apk alias_name",
     "apk": "npm run release & npm run keysign"
   },
   "eslintConfig": {
