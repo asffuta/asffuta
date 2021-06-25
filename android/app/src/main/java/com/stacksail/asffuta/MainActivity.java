@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.stacksail.asffuta;
 
 import com.getcapacitor.BridgeActivity;
 
