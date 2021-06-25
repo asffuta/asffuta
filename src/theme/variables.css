@@ -92,6 +92,11 @@ http://ionicframework.com/docs/theming/ */
 
   /** configurations */
   --ion-font-family: Poppins;
+  --icon-font-size: 12px;
+}
+
+.show-back-button {
+  display: inline-block!important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -262,6 +267,11 @@ http://ionicframework.com/docs/theming/ */
   justify-content: center;
 }
 
+.left {
+  text-align: left;
+  justify-content: left;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -284,4 +294,12 @@ a {
   margin: 35%;
   margin-top: 15%;
   margin-bottom: 15%;
+}
+
+.fixed-header {
+  position: fixed!important;
+}
+
+.fixed-header + * {
+  margin-top: 80px;
 }
