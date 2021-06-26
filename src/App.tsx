@@ -5,6 +5,7 @@ import { IonReactRouter } from "@ionic/react-router";
 import Home from "./pages/Home";
 import Welcome from "./pages/Welcome";
 import Study from "./pages/Study";
+import { getColorScheme } from "./utils";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -28,7 +29,7 @@ import "./theme/variables.css";
 export default class App extends Component {
   public render() {
     return (
-      <IonApp>
+      <IonApp className={getColorScheme()}>
         <IonReactRouter>
           <IonRouterOutlet>
             <Route path="/study/:id" children={<Study />} />
