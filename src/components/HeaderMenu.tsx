@@ -7,10 +7,13 @@ import {
   IonMenu,
   IonImg,
   IonLabel,
+  IonListHeader,
+  IonToggle,
 } from "@ionic/react";
 import { Component } from "react";
 import { CgFacebook, CgInstagram, CgTwitter } from "react-icons/cg";
 import ASFLogo from "../theme/images/logo.png";
+import { getColorScheme, setColorScheme } from "../utils";
 
 export default class HeaderMenu extends Component {
   public render() {
@@ -23,6 +26,21 @@ export default class HeaderMenu extends Component {
         </IonHeader>
         <IonContent>
           <IonList>
+            <IonListHeader>
+              <IonLabel>Preferences</IonLabel>
+            </IonListHeader>
+            <IonItem>
+              <IonLabel> Toggle Dark Mode?</IonLabel>
+              <IonToggle
+                checked={getColorScheme() === "dark"}
+                onIonChange={(e) => setColorScheme()}
+              />
+            </IonItem>
+          </IonList>
+          <IonList>
+            <IonListHeader>
+              <IonLabel>Social Media Handles</IonLabel>
+            </IonListHeader>
             <IonItem href="https://facebook.com/asffutang">
               <CgFacebook />
               <IonLabel> &nbsp; Facebook </IonLabel>
