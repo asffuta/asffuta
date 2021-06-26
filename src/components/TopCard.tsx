@@ -4,16 +4,16 @@ import { CgCircleci } from "react-icons/cg";
 import { datef } from "../utils";
 
 export default class TopCard extends Component<{}, HomeState> {
-  constructor(props ={}){
+  constructor(props = {}){
     super(props);
-    this.state = {}
+    this.state = {};
   }
   
   public componentDidMount() {
     setInterval(() => {
       this.setState({
-        curDate: datef("LLLL d, y"),
-        curTime: datef("t a"),
+        curDate: datef("LLL d, y"),
+        curTime: datef("hh:mm a"),
       });
     });
   }

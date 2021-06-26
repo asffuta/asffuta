@@ -7,6 +7,11 @@
   margin: 1.3em;
 }
 
+.searchbar-input-container {
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+}
+
 .card-radius {
   border-radius: 1rem;
 }
