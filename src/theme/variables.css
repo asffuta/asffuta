@@ -3,6 +3,9 @@ http://ionicframework.com/docs/theming/ */
 
 @font-face {
   font-family: Overlock;
+  src: url(./Fonts/Overlock-Black.ttf);
+  src: url(./Fonts/Overlock-Bold.ttf);
+  src: url(./Fonts/Overlock-Italic.ttf);
   src: url(./Fonts/Overlock-Regular.ttf);
 }
 
