@@ -19,23 +19,31 @@ export default class Welcome extends Component<{}, WelcomeState> {
   public scrolls = [
     {
       image: WelcomeSvg1,
-      text: `The classic and elegant bible study app for ASFFUTA. Built with the user's ease of use in mind on a very user-friendly design by competent devlopers.`,
+      text: `One Bible Study app for Asfites...`,
       button: "Next",
       link: "#",
     },
     {
       image: WelcomeSvg2,
-      text: `Encountered any problems? Thought of a stunning new feature? Feel free to drop your complaints/requests with the General Secretary.`,
+      text: `Open discussion with intuitive design...`,
       button: "Get Started",
       link: "/home",
     },
   ];
-  
+
   constructor(props = {}) {
     super(props);
     this.state = {
       curScroll: 0,
     };
+  }
+
+  public get scroll_id() {
+    return this.state.curScroll;
+  }
+
+  public get scroll() {
+    return this.scrolls[this.scroll_id];
   }
 
   public handleScroll() {
@@ -46,26 +54,25 @@ export default class Welcome extends Component<{}, WelcomeState> {
     } else this.handleSkip();
   }
 
-  public handleSkip(){
-    localStorage.setItem("started", "true");
+  public handleSkip() {
+    localStorage.setItem("get_started", "true");
   }
 
   public render() {
-    if(localStorage.getItem("started")){
-      return <Redirect to="/home"/>;
-    } else {
-      let scroll = this.scrolls[this.state.curScroll];
-      return (
-        <IonPage>
-          <IonContent className="content" color="warning">
+    return (
+      <IonPage>
+        <IonContent className="content" color="light">
+          {localStorage.getItem("get_started") ? (
+            <Redirect to="/home" />
+          ) : (
             <IonGrid>
               <IonRow>
                 <IonCol push="5">
                   <Link
                     to="/home"
                     onClick={this.handleSkip}
-                    style={{ color: "black" }}
-                    hidden={this.state.curScroll > 0}
+                    color="dark"
+                    hidden={this.scroll_id > 0}
                   >
                     <IonLabel>Skip</IonLabel>
                   </Link>
@@ -73,31 +80,31 @@ export default class Welcome extends Component<{}, WelcomeState> {
               </IonRow>
               <IonRow class="boxed">
                 <IonCol push="2">
-                  <IonImg className="image" src={scroll.image} />
+                  <IonImg className="image" src={this.scroll.image} />
                 </IonCol>
               </IonRow>
               <IonRow>
                 <IonCol size="9" push="1.5">
-                  <IonLabel> {scroll.text} </IonLabel>
+                  <IonLabel> {this.scroll.text} </IonLabel>
                 </IonCol>
               </IonRow>
               <IonRow>
                 <IonCol>
-                  <Link to={scroll.link}>
+                  <Link to={this.scroll.link}>
                     <IonButton
-                      color="dark"
+                      color="warning"
                       onClick={this.handleScroll.bind(this)}
                     >
-                      {scroll.button}
+                      {this.scroll.button}
                       <CgArrowRightO />
                     </IonButton>
                   </Link>
                 </IonCol>
               </IonRow>
             </IonGrid>
-          </IonContent>
-        </IonPage>
-      );
-    }
+          )}
+        </IonContent>
+      </IonPage>
+    );
   }
 }
