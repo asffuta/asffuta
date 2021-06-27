@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">asffuta</string>
-    <string name="title_activity_main">asffuta</string>
+    <string name="app_name">ASFFUTA Bible Study Outline</string>
+    <string name="title_activity_main">ASFFUTA Bible Study Outline</string>
     <string name="package_name">com.stacksail.asffuta</string>
     <string name="custom_url_scheme">com.stacksail.asffuta</string>
 </resources>
