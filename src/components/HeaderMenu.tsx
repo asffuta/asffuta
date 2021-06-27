@@ -29,8 +29,8 @@ export default class HeaderMenu extends Component {
             <IonListHeader>
               <IonLabel>Preferences</IonLabel>
             </IonListHeader>
-            <IonItem>
-              <IonLabel> Toggle Dark Mode?</IonLabel>
+            <IonItem className="small">
+              <IonLabel>Dark Mode</IonLabel>
               <IonToggle
                 checked={getColorScheme() === "dark"}
                 onIonChange={(e) => setColorScheme()}
@@ -41,15 +41,15 @@ export default class HeaderMenu extends Component {
             <IonListHeader>
               <IonLabel>Social Media Handles</IonLabel>
             </IonListHeader>
-            <IonItem href="https://facebook.com/asffutang">
+            <IonItem className="small" href="https://facebook.com/asffutang">
               <CgFacebook />
               <IonLabel> &nbsp; Facebook </IonLabel>
             </IonItem>
-            <IonItem href="https://twitter.com/asffutang">
+            <IonItem className="small" href="https://twitter.com/asffutang">
               <CgTwitter />
               <IonLabel> &nbsp; Twitter </IonLabel>
             </IonItem>
-            <IonItem href="https://instagram.com/asffutang">
+            <IonItem className="small" href="https://instagram.com/asffutang">
               <CgInstagram />
               <IonLabel> &nbsp; Instagram </IonLabel>
             </IonItem>

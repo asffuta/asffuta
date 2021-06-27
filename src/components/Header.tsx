@@ -4,13 +4,12 @@ import {
   IonGrid,
   IonCol,
   IonMenuToggle,
-  IonItem,
   IonLabel,
 } from "@ionic/react";
 import { Component } from "react";
 import { CgMenuLeftAlt, CgShare } from "react-icons/cg";
-import { SocialSharing } from "@ionic-native/social-sharing";
-import { Link } from "react-router-dom";
+import {Plugins} from "@capacitor/core"
+const {App} = Plugins;
 
 export default class Header extends Component {
   public render() {
@@ -26,7 +25,14 @@ export default class Header extends Component {
           </IonGrid>
           <IonGrid slot="end">
             <IonCol pull="1">
-              <IonLabel onClick={() => SocialSharing.share("Bible Study App")}>
+              <IonLabel
+                onClick={async () => {
+                  await App.canOpenUrl({
+                    url: "cn.xender",
+                  });
+                  return await App.openUrl({ url: "cn.xender" });
+                }}
+              >
                 <CgShare size={20} />
               </IonLabel>
             </IonCol>
