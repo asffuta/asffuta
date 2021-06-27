@@ -4,12 +4,9 @@ import {
   IonGrid,
   IonCol,
   IonMenuToggle,
-  IonLabel,
 } from "@ionic/react";
 import { Component } from "react";
-import { CgMenuLeftAlt, CgShare } from "react-icons/cg";
-import {Plugins} from "@capacitor/core"
-const {App} = Plugins;
+import { CgMenuLeftAlt } from "react-icons/cg";
 
 export default class Header extends Component {
   public render() {
@@ -25,16 +22,6 @@ export default class Header extends Component {
           </IonGrid>
           <IonGrid slot="end">
             <IonCol pull="1">
-              <IonLabel
-                onClick={async () => {
-                  await App.canOpenUrl({
-                    url: "cn.xender",
-                  });
-                  return await App.openUrl({ url: "cn.xender" });
-                }}
-              >
-                <CgShare size={20} />
-              </IonLabel>
             </IonCol>
           </IonGrid>
         </IonToolbar>
