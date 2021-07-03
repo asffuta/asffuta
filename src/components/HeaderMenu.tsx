@@ -29,13 +29,6 @@ export default class HeaderMenu extends Component {
             <IonListHeader>
               <IonLabel>Preferences</IonLabel>
             </IonListHeader>
-            <IonItem className="small">
-              <IonLabel>Dark Mode</IonLabel>
-              <IonToggle
-                checked={getColorScheme() === "dark"}
-                onIonChange={(e) => setColorScheme()}
-              />
-            </IonItem>
           </IonList>
           <IonList>
             <IonListHeader>
