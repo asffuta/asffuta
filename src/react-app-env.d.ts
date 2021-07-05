@@ -7,7 +7,7 @@ interface HomeState {
 }
 
 interface WelcomeState {
-  curScroll: number;
+  current: number;
 }
 
 interface StudyList {

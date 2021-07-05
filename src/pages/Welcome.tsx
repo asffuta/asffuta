@@ -1,5 +1,9 @@
 import {
   IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
   IonCol,
   IonContent,
   IonGrid,
@@ -7,6 +11,8 @@ import {
   IonLabel,
   IonPage,
   IonRow,
+  IonSlide,
+  IonSlides,
 } from "@ionic/react";
 import { Component } from "react";
 import { CgArrowRightO } from "react-icons/cg";
@@ -16,7 +22,7 @@ import WelcomeSvg2 from "../theme/Welcome02.svg";
 import "../theme/Welcome.css";
 
 export default class Welcome extends Component<{}, WelcomeState> {
-  public scrolls = [
+  public slides = [
     {
       image: WelcomeSvg1,
       text: `One Bible Study app for Asfites...`,
@@ -34,24 +40,12 @@ export default class Welcome extends Component<{}, WelcomeState> {
   constructor(props = {}) {
     super(props);
     this.state = {
-      curScroll: 0,
+      current: 0,
     };
   }
 
-  public get scroll_id() {
-    return this.state.curScroll;
-  }
-
-  public get scroll() {
-    return this.scrolls[this.scroll_id];
-  }
-
-  public handleScroll() {
-    if (this.state.curScroll < this.scrolls.length - 1) {
-      this.setState({
-        curScroll: this.state.curScroll + 1,
-      });
-    } else this.handleSkip();
+  public get slide_id() {
+    return this.state.current;
   }
 
   public handleSkip() {
@@ -59,52 +53,46 @@ export default class Welcome extends Component<{}, WelcomeState> {
   }
 
   public render() {
-    return (
+    return !localStorage.getItem("get_starte") ? (
       <IonPage>
-        <IonContent className="content" color="light">
-          {localStorage.getItem("get_started") ? (
-            <Redirect to="/home" />
-          ) : (
-            <IonGrid>
-              <IonRow>
-                <IonCol push="5">
-                  <Link
-                    to="/home"
-                    onClick={this.handleSkip}
-                    color="dark"
-                    hidden={this.scroll_id > 0}
-                  >
-                    <IonLabel>Skip</IonLabel>
-                  </Link>
-                </IonCol>
-              </IonRow>
-              <IonRow class="boxed">
-                <IonCol push="2">
-                  <IonImg className="image" src={this.scroll.image} />
-                </IonCol>
-              </IonRow>
-              <IonRow>
-                <IonCol size="9" push="1.5">
-                  <IonLabel> {this.scroll.text} </IonLabel>
-                </IonCol>
-              </IonRow>
-              <IonRow>
-                <IonCol>
-                  <Link to={this.scroll.link}>
-                    <IonButton
-                      color="warning"
-                      onClick={this.handleScroll.bind(this)}
-                    >
-                      {this.scroll.button}
-                      <CgArrowRightO />
-                    </IonButton>
-                  </Link>
-                </IonCol>
-              </IonRow>
-            </IonGrid>
-          )}
+        <IonContent color="warning">
+          <IonGrid>
+            <IonRow>
+              <IonCol className="ion-text-end">
+                <Link
+                  to="/home"
+                  onClick={this.handleSkip}
+                  hidden={this.slide_id > 0}
+                >
+                  <IonLabel>Skip</IonLabel>
+                </Link>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+          <IonSlides>
+            {this.slides.map((slide, key) => (
+              <IonSlide key={key}>
+                <IonCard className="slide-card" color="dark" slot="bottom">
+                  <IonCardHeader className="center">
+                    <IonImg src={slide.image} />
+                    <IonCardSubtitle>{slide.text}</IonCardSubtitle>
+                  </IonCardHeader>
+                  <IonCardContent>
+                    <Link to={slide.link}>
+                      <IonButton color="warning">
+                        {slide.button}
+                        <CgArrowRightO />
+                      </IonButton>
+                    </Link>
+                  </IonCardContent>
+                </IonCard>
+              </IonSlide>
+            ))}
+          </IonSlides>
         </IonContent>
       </IonPage>
+    ) : (
+      <Redirect to="/home" />
     );
   }
 }

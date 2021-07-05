@@ -1,21 +1,19 @@
-.content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  text-align: center;
-}
-
 .boxed {
   margin-top: 15vh;
 }
 
-.image {
-  width: 80%
+.slide-card {
+  width: 80%;
+  padding: 5%;
+  margin-top: 25%;
+}
+
+.slide-card img {
+  height: 150px;
+}
+
+a {
+  color: black!important;
 }
 
 .button svg {
