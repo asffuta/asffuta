@@ -25,13 +25,13 @@ export default class Welcome extends Component<{}, WelcomeState> {
   public slides = [
     {
       image: WelcomeSvg1,
-      text: `One Bible Study app for Asfites...`,
+      text: "One Bible Study app for Asfites...",
       button: "Next",
       link: "#",
     },
     {
       image: WelcomeSvg2,
-      text: `Open discussion with intuitive design...`,
+      text: "Open discussion with intuitive design...",
       button: "Get Started",
       link: "/home",
     },

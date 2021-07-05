@@ -32,7 +32,9 @@ export default class App extends Component {
       <IonApp className={getColorScheme()}>
         <IonReactRouter>
           <IonRouterOutlet>
-            <Route path="/study/:id" children={<Study />} />
+            <Route path="/study/:id">
+              <Study />
+            </Route>
             <Route exact path="/home">
               <Home />
             </Route>

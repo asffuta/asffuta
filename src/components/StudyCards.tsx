@@ -13,18 +13,18 @@ export default class StudyCards extends Component<{ query?: string }> {
 
   public async componentDidMount() {
     await getOutlines().then((rows: any) => {
-      for (let row in rows) {
-        for (let data of rows[row]) {
+      for (const row in rows) {
+        for (const data of rows[row]) {
           this.studies.push(data.value);
         }
       }
     });
-    this.forceUpdate()
+    this.forceUpdate();
   }
 
   public loadStudies(filter?: string) {
-    let studyList = [];
-    for (let study of this.studies) {
+    const studyList = [];
+    for (const study of this.studies) {
       if (filter && study[1]._text.search(filter) < 0) continue;
       studyList.push(<StudyCard key={study[0]._text} {...study} />);
     }

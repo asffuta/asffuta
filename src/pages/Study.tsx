@@ -8,12 +8,12 @@ import "../theme/Study.css";
 export default withHook(
   class Study extends Component<{ params: any }> {
     public outline: StudyOutline[] = [];
-    public headings = ["Introduction", "points for Discussion", 'Conclusion', 'Food For Thought', 'Memory Verse'];
+    public headings = ["Introduction", "points for Discussion", "Conclusion", "Food For Thought", "Memory Verse"];
     constructor(props: any) {
       super(props);
       getOutlines().then((rows: any) => {
-        for (let row in rows) {
-          for (let data of rows[row][this.props.params.id - 1].value) {
+        for (const row in rows) {
+          for (const data of rows[row][this.props.params.id - 1].value) {
             this.outline.push({
               attr: data._attributes,
               text: data?._cdata || data?._text,
@@ -25,7 +25,7 @@ export default withHook(
     }
 
     public render() {
-      let aims: JSX.Element[] = [];
+      const aims: JSX.Element[] = [];
       this.outline[3]?.text?.split(";").forEach((aim, index) => {
         aims.push(
           <h4>
@@ -33,9 +33,9 @@ export default withHook(
           </h4>
         );
       });
-      let body: JSX.Element[] = [];
+      const body: JSX.Element[] = [];
       this.outline.slice(4, 9).forEach((outline, index) => {
-        let content: JSX.Element[] = [];
+        const content: JSX.Element[] = [];
         outline?.text?.split("\n").forEach((aim, index) => {
           content.push(<h3>{aim}</h3>);
         });

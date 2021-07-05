@@ -3,12 +3,10 @@ import { Component } from "react";
 import { CgCircleci } from "react-icons/cg";
 import { calendar } from "../utils";
 
-export default class TopCard extends Component<{}, HomeState> {
-  constructor(props = {}){
-    super(props);
-    this.state = {};
-  }
+export default class TopCard extends Component {
   
+  public state: HomeState = {};
+
   public componentDidMount() {
     setInterval(() => {
       this.setState({
