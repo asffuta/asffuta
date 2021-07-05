@@ -3,10 +3,11 @@ import { DateTime } from "luxon";
 import { useState } from "react";
 import { xml2js } from "xml-js";
 
-export function datef(format: string) {
-  const CDATE = DateTime.fromJSDate(new Date());
-  return CDATE.toFormat(format);
-}
+export const { fromJSDate: jsDate } = DateTime;
+
+export const calendar = (format = "t a", date = new Date()) => {
+  return jsDate(date).toFormat(format);
+};
 
 export const getOutlines = () => {
   return axios
@@ -26,10 +27,9 @@ export const withHook = (
 };
 
 export function isDarkMode() {
-  return (
-    localStorage.getItem("theme") ? localStorage.getItem("theme") === "dark":
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  );
+  return localStorage.getItem("theme")
+    ? localStorage.getItem("theme") === "dark"
+    : window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
 export function getColorScheme() {

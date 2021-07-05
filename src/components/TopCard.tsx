@@ -1,7 +1,7 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonLabel, IonRow } from "@ionic/react";
 import { Component } from "react";
 import { CgCircleci } from "react-icons/cg";
-import { datef } from "../utils";
+import { calendar } from "../utils";
 
 export default class TopCard extends Component<{}, HomeState> {
   constructor(props = {}){
@@ -12,8 +12,8 @@ export default class TopCard extends Component<{}, HomeState> {
   public componentDidMount() {
     setInterval(() => {
       this.setState({
-        curDate: datef("LLL d, y"),
-        curTime: datef("hh:mm a"),
+        curDate: calendar("LLL d, y"),
+        curTime: calendar("hh:mm a"),
       });
     });
   }
