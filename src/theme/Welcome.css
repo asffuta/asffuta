@@ -1,5 +1,10 @@
-.boxed {
-  margin-top: 15vh;
+.slide-container {
+  --ion-color-warning: radial-gradient(
+    circle,
+    rgb(233, 191, 7) 44%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  --ion-color-primary: black;
 }
 
 .slide-card {
@@ -10,10 +15,6 @@
 
 .slide-card img {
   height: 150px;
-}
-
-a {
-  color: black!important;
 }
 
 .button svg {

@@ -14,14 +14,17 @@ import {
   IonSlide,
   IonSlides,
 } from "@ionic/react";
-import { Component } from "react";
+import { Component, createRef } from "react";
 import { CgArrowRightO } from "react-icons/cg";
 import { Link, Redirect } from "react-router-dom";
 import WelcomeSvg1 from "../theme/Welcome01.svg";
 import WelcomeSvg2 from "../theme/Welcome02.svg";
 import "../theme/Welcome.css";
 
-export default class Welcome extends Component<{}, WelcomeState> {
+export const slider = createRef<HTMLIonSlidesElement>();
+
+export default class Welcome extends Component {
+
   public slides = [
     {
       image: WelcomeSvg1,
@@ -37,39 +40,24 @@ export default class Welcome extends Component<{}, WelcomeState> {
     },
   ];
 
-  constructor(props = {}) {
-    super(props);
-    this.state = {
-      current: 0,
-    };
-  }
-
-  public get slide_id() {
-    return this.state.current;
-  }
-
   public handleSkip() {
     localStorage.setItem("get_started", "true");
   }
 
   public render() {
     return !localStorage.getItem("get_starte") ? (
-      <IonPage>
+      <IonPage className="slide-container">
         <IonContent color="warning">
           <IonGrid>
             <IonRow>
-              <IonCol className="ion-text-end">
-                <Link
-                  to="/home"
-                  onClick={this.handleSkip}
-                  hidden={this.slide_id > 0}
-                >
+              <IonCol className="ion-text-end ion-text-padding">
+                <Link to="/home" onClick={this.handleSkip}>
                   <IonLabel>Skip</IonLabel>
                 </Link>
               </IonCol>
             </IonRow>
           </IonGrid>
-          <IonSlides>
+          <IonSlides ref={slider}>
             {this.slides.map((slide, key) => (
               <IonSlide key={key}>
                 <IonCard className="slide-card" color="dark" slot="bottom">
@@ -78,7 +66,13 @@ export default class Welcome extends Component<{}, WelcomeState> {
                     <IonCardSubtitle>{slide.text}</IonCardSubtitle>
                   </IonCardHeader>
                   <IonCardContent>
-                    <Link to={slide.link}>
+                    <Link
+                      to={slide.link}
+                      onClick={async () => {
+                        const swipe = await slider.current?.getSwiper();
+                        swipe.slideNext();
+                      }}
+                    >
                       <IonButton color="warning">
                         {slide.button}
                         <CgArrowRightO />
