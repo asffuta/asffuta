@@ -35,6 +35,7 @@
     "jetifier": "^2.0.0",
     "logrocket": "^1.3.0",
     "luxon": "^1.21.3",
+    "npm-run-all": "^4.1.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
@@ -61,15 +62,17 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "bundle:resources": "cordova-res --skip-config --copy android",
+    "build:start": "ionic cap sync & cd android",
+    "build:release": "npm run build:start & gradlew clean & gradlew assembleRelease",
+    "build:debug": "npm run build:start & gradlew assembleDebug",
+    "jetify": "jetify",
+    "keygen": "keytool -genkey -v -keystore release.kys -alias asffuta -keyalg RSA -keysize 2048 -validity 10000",
+    "keysign": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release.kys app/build/outputs/apk/debug/app-debug.apk asffuta",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "jetify": "jetify",
-    "resources": "cordova-res --skip-config --copy android",
-    "release": "ionic cap sync & cd android & gradlew clean & gradlew assembleDebug & cd ..",
-    "keygen": "keytool -genkey -v -keystore release.kys -alias alias_name -keyalg RSA -keysize 2048 -validity 10000",
-    "keysign": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release.kys android/app/build/outputs/apk/debug/app-debug.apk alias_name",
-    "apk": "npm run jetify & npm run release & npm run keysign",
-    "lint": "eslint src/** --fix"
+    "lint": "eslint src/** --fix",
+    "release": "run-s -sn lint jetify build:release keysign"
   },
   "eslintConfig": {
     "extends": [
