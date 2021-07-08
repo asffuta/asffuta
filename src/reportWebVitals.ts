@@ -1,4 +1,5 @@
 import { ReportHandler } from "web-vitals";
+import { Device } from "@ionic-native/device";
 import LogRocket from "logrocket";
 
 const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
@@ -11,6 +12,7 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
       getTTFB(onPerfEntry);
     });
   }
+  LogRocket.identify(Device.uuid);
   LogRocket.init("asffuta/asffuta");
 };
 
