@@ -11,7 +11,12 @@ export default class StudyCards extends Component<{ query?: string }> {
 
   public state: { searchText?: string, studies?: JSX.Element[] } = {};
 
-  public async componentDidMount() {
+  /**
+   * This event dispatches once the component is mounted
+   * It is defined async and awaited in order to ensure the studies are loaded
+   * before any other action takes place
+   */
+  public async componentDidMount(): Promise<void> {
     await getOutlines().then((rows: any) => {
       for (const row in rows) {
         for (const data of rows[row]) {
@@ -22,7 +27,7 @@ export default class StudyCards extends Component<{ query?: string }> {
     this.forceUpdate();
   }
 
-  public loadStudies(filter?: string) {
+  public loadStudies(filter?: string): JSX.Element[] {
     const studyList = [];
     for (const study of this.studies) {
       if (filter && study[1]._text.search(filter) < 0) continue;
@@ -31,13 +36,13 @@ export default class StudyCards extends Component<{ query?: string }> {
     return studyList;
   }
 
-  public handleSearch(e: any) {
+  public handleSearch(e: CustomEvent): void {
     this.setState({
       searchText: e.detail.value
     });
   }
 
-  public render() {
+  public render(): React.ReactNode {
     return (
       <IonGrid>
         <IonSearchbar
@@ -69,7 +74,7 @@ export default class StudyCards extends Component<{ query?: string }> {
     );
   }
 
-  public handleScroll() {
+  public handleScroll(): void {
     document.getElementById("scroll")?.scrollIntoView({ behavior: "smooth" });
   }
 }

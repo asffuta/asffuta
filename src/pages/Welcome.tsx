@@ -40,11 +40,11 @@ export default class Welcome extends Component {
     },
   ];
 
-  public handleSkip() {
+  public handleSkip(): void {
     localStorage.setItem("get_started", "true");
   }
 
-  public render() {
+  public render(): React.ReactNode {
     return !localStorage.getItem("get_starte") ? (
       <IonPage className="slide-container">
         <IonContent color="warning">

@@ -1,7 +1,6 @@
 import axios from "axios";
-import { Component } from "ionicons/dist/types/stencil-public-runtime";
 import { DateTime } from "luxon";
-import React, { useState } from "react";
+import { useState, ComponentClass } from "react";
 import { xml2js } from "xml-js";
 
 export const { fromJSDate: jsDate } = DateTime;
@@ -19,7 +18,11 @@ export const getOutlines = (): Promise<any> => {
   );
 };
 
-export const withHook = (Component: any, Hook = useState, param = "") => {
+export const withHook = (
+  Component: ComponentClass<{ params: any[] }>,
+  Hook = useState,
+  param = ""
+) => {
   // eslint-disable-next-line react/display-name
   return (props: unknown): JSX.Element => {
     const params = Hook(param);
