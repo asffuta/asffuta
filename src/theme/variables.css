@@ -15,8 +15,23 @@ http://ionicframework.com/docs/theming/ */
 }
 
 @font-face {
-  font-family: Poppins, sans-serif;
+  font-family: Poppins;
   src: url(./Fonts/Poppins-Regular.otf);
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(./Fonts/Montserrat-Light.ttf);
+}
+
+@font-face {
+  font-family: GoogleSans;
+  src: url(./Fonts/ProductSans-Light.ttf);
+}
+
+@font-face {
+  font-family: Catamaran;
+  src: url(./Fonts/Catamaran.ttf);
 }
 
 /** Ionic CSS Variables **/
@@ -94,7 +109,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 
   /** configurations */
-  --ion-font-family: Poppins;
+  --ion-font-family: Catamaran;
   --icon-font-size: 12px;
 }
 
@@ -295,12 +310,4 @@ a {
   margin: 35%;
   margin-top: 15%;
   margin-bottom: 15%;
-}
-
-.fixed-header {
-  position: fixed!important;
-}
-
-.fixed-header + * {
-  margin-top: 80px;
 }

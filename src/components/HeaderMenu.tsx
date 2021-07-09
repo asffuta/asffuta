@@ -7,13 +7,11 @@ import {
   IonMenu,
   IonImg,
   IonLabel,
-  IonListHeader,
-  IonToggle,
+  IonListHeader
 } from "@ionic/react";
 import { Component } from "react";
 import { CgFacebook, CgInstagram, CgTwitter } from "react-icons/cg";
 import ASFLogo from "../theme/images/logo.png";
-import { getColorScheme, setColorScheme } from "../utils";
 
 export default class HeaderMenu extends Component {
   public render() {

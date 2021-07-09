@@ -2,7 +2,7 @@ import { IonContent, IonItem, IonLabel, IonList, IonPage } from "@ionic/react";
 import { Component } from "react";
 import { getOutlines, withHook } from "../utils";
 import { useParams } from "react-router";
-import StudyHeader from "../components/StudyHeader";
+import StudyHeader from "../components/PageHeader";
 import "../theme/Study.css";
 
 export default withHook(

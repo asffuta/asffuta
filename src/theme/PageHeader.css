@@ -1,0 +1,16 @@
+.more {
+  color: black;
+}
+
+.subtitle {
+  font-size: .7em;
+  display: block;
+}
+
+.fixed-header {
+  position: fixed!important;
+}
+
+.fixed-header + * {
+  margin-top: 80px;
+}

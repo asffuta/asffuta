@@ -15,7 +15,7 @@ import {
   IonSlides,
 } from "@ionic/react";
 import { Component, createRef } from "react";
-import { CgArrowRightO, CgDice1, CgLinear } from "react-icons/cg";
+import { CgArrowRightO, CgLinear } from "react-icons/cg";
 import { Link, Redirect } from "react-router-dom";
 import WelcomeSvg1 from "../theme/Welcome01.svg";
 import WelcomeSvg2 from "../theme/Welcome02.svg";
