@@ -15,15 +15,14 @@ import {
   IonSlides,
 } from "@ionic/react";
 import { Component, createRef } from "react";
-import { CgArrowRightO } from "react-icons/cg";
+import { CgArrowRightO, CgDice1, CgLinear } from "react-icons/cg";
 import { Link, Redirect } from "react-router-dom";
 import WelcomeSvg1 from "../theme/Welcome01.svg";
 import WelcomeSvg2 from "../theme/Welcome02.svg";
 import "../theme/Welcome.css";
 
-export const slider = createRef<HTMLIonSlidesElement>();
-
 export default class Welcome extends Component {
+  public slider = createRef<HTMLIonSlidesElement>();
 
   public slides = [
     {
@@ -57,7 +56,7 @@ export default class Welcome extends Component {
               </IonCol>
             </IonRow>
           </IonGrid>
-          <IonSlides ref={slider}>
+          <IonSlides ref={this.slider}>
             {this.slides.map((slide, key) => (
               <IonSlide key={key}>
                 <IonCard className="slide-card" color="dark" slot="bottom">
@@ -69,7 +68,7 @@ export default class Welcome extends Component {
                     <Link
                       to={slide.link}
                       onClick={async () => {
-                        const swipe = await slider.current?.getSwiper();
+                        const swipe = await this.slider.current?.getSwiper();
                         swipe.slideNext();
                       }}
                     >
@@ -83,6 +82,24 @@ export default class Welcome extends Component {
               </IonSlide>
             ))}
           </IonSlides>
+          <IonGrid>
+            <IonRow>
+              <IonCol className="ion-text-center">
+                {this.slides.map((s, k) => {
+                  return (
+                    <IonLabel
+                      key={k}
+                      onClick={async () =>
+                        await this.slider.current?.slideTo(k)
+                      }
+                    >
+                      <CgLinear color="white" /> {" "}
+                    </IonLabel>
+                  );
+                })}
+              </IonCol>
+            </IonRow>
+          </IonGrid>
         </IonContent>
       </IonPage>
     ) : (
