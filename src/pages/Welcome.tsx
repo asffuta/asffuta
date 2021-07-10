@@ -44,7 +44,7 @@ export default class Welcome extends Component {
   }
 
   public render(): React.ReactNode {
-    return !localStorage.getItem("get_starte") ? (
+    return !localStorage.getItem("get_started") ? (
       <IonPage className="slide-container">
         <IonContent color="warning">
           <IonGrid>

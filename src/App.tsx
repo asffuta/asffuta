@@ -2,10 +2,11 @@ import { Component } from "react";
 import { Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
+import { getColorScheme } from "./utils";
 import Home from "./pages/Home";
 import Welcome from "./pages/Welcome";
 import Study from "./pages/Study";
-import { getColorScheme } from "./utils";
+import Feedback from "./pages/Feedback";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -34,6 +35,9 @@ export default class App extends Component {
           <IonRouterOutlet>
             <Route path="/study/:id">
               <Study />
+            </Route>
+            <Route exact path="/feedback">
+              <Feedback />
             </Route>
             <Route exact path="/home">
               <Home />

@@ -14,7 +14,7 @@ import { CgFacebook, CgInstagram, CgTwitter } from "react-icons/cg";
 import ASFLogo from "../theme/images/logo.png";
 
 export default class HeaderMenu extends Component {
-  public render() {
+  public render(): JSX.Element {
     return (
       <IonMenu contentId="homepage">
         <IonHeader>
@@ -24,9 +24,9 @@ export default class HeaderMenu extends Component {
         </IonHeader>
         <IonContent>
           <IonList>
-            <IonListHeader>
-              <IonLabel>Preferences</IonLabel>
-            </IonListHeader>
+            <IonItem className="small" href="/feedback">
+              <IonLabel>Feedback</IonLabel>
+            </IonItem>
           </IonList>
           <IonList>
             <IonListHeader>
