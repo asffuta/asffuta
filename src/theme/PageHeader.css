@@ -5,6 +5,10 @@
 .subtitle {
   font-size: .7em;
   display: block;
+  max-width: 150px;
+  padding-left: 1.4em;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
