@@ -1,15 +1,24 @@
-import { IonCol, IonGrid, IonLabel, IonRow, IonSearchbar } from "@ionic/react";
+import {
+  IonCol,
+  IonGrid,
+  IonItem,
+  IonLabel,
+  IonRow,
+  IonSearchbar,
+} from "@ionic/react";
 import { Component } from "react";
 import StudyCard from "./StudyCard";
 import { Link } from "react-router-dom";
 import { getOutlines } from "../utils";
-import { CgArrowDownO } from "react-icons/cg";
+import {
+  CgArrowDownO,
+} from "react-icons/cg";
 import "../theme/Study.css";
 
 export default class StudyCards extends Component<{ query?: string }> {
   public studies: any[] = [];
 
-  public state: { searchText?: string, studies?: JSX.Element[] } = {};
+  public state: { searchText?: string; studies?: JSX.Element[] } = {};
 
   /**
    * This event dispatches once the component is mounted
@@ -27,18 +36,9 @@ export default class StudyCards extends Component<{ query?: string }> {
     this.forceUpdate();
   }
 
-  public loadStudies(filter?: string): JSX.Element[] {
-    const studyList = [];
-    for (const study of this.studies) {
-      if (filter && study[1]._text.search(filter) < 0) continue;
-      studyList.push(<StudyCard key={study[0]._text} {...study} />);
-    }
-    return studyList;
-  }
-
   public handleSearch(e: CustomEvent): void {
     this.setState({
-      searchText: e.detail.value
+      searchText: e.detail.value,
     });
   }
 
@@ -47,26 +47,35 @@ export default class StudyCards extends Component<{ query?: string }> {
       <IonGrid>
         <IonSearchbar
           color="light"
+          className="searchbar"
           onIonChange={this.handleSearch.bind(this)}
           animated
         />
+        <IonItem
+          className="ion-no-padding"
+          lines="full"
+          style={{ fontSize: ".94em" }}
+        >
+          <IonCol size="6" push="0.4">
+            <IonLabel className="bold"> Study Outline </IonLabel>
+          </IonCol>
+          <IonCol className="ion-text-right">
+            <Link to="#scroll" onClick={this.handleScroll}>
+              <CgArrowDownO />
+            </Link>
+          </IonCol>
+        </IonItem>
         <IonRow>
-          <IonGrid>
-            <IonCol push="0.4">
-              <IonLabel className="bold"> Study Outlines </IonLabel>
-            </IonCol>
-          </IonGrid>
-          <IonGrid>
-            <IonCol pull="-8">
-              <Link to="#scroll" onClick={this.handleScroll}>
-                Last <CgArrowDownO />
-              </Link>
-            </IonCol>
-          </IonGrid>
-        </IonRow>
-        <IonRow>
-          <IonCol size="12">
-            {this.loadStudies(this.state.searchText)}
+          <IonCol size="12" className="ion-no-padding">
+            {this.studies
+              .filter(
+                (study) =>
+                  (!this.state.searchText ||
+                    study[1]._text.search(this.state.searchText)) > 0
+              )
+              .map<JSX.Element>((study: any) => (
+                <StudyCard key={study[0]._text} {...study} />
+              ))}
           </IonCol>
         </IonRow>
         <div id="scroll"></div>
