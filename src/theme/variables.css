@@ -3,15 +3,18 @@ http://ionicframework.com/docs/theming/ */
 
 @font-face {
   font-family: Overlock;
-  src: url(./Fonts/Overlock-Black.ttf);
-  src: url(./Fonts/Overlock-Bold.ttf);
-  src: url(./Fonts/Overlock-Italic.ttf);
-  src: url(./Fonts/Overlock-Regular.ttf);
+  src: url(./Fonts/Overlock/Overlock-Black.ttf);
+  src: url(./Fonts/Overlock/Overlock-Bold.ttf);
+  src: url(./Fonts/Overlock/Overlock-Italic.ttf);
+  src: url(./Fonts/Overlock/Overlock-Regular.ttf);
 }
 
 @font-face {
-  font-family: Baloo;
-  src: url(./Fonts/BalooTamma-Regular.ttf);
+  font-family: OpenSans;
+  src: url(./Fonts/Open-sans/OpenSans-Bold.ttf);
+  src: url(./Fonts/Open-sans/OpenSans-BoldItalic.ttf);
+  src: url(./Fonts/Open-sans/OpenSans-ExtraBold.ttf);
+  src: url(./Fonts/Open-sans/OpenSans-Regular.ttf);
 }
 
 @font-face {
@@ -20,18 +23,8 @@ http://ionicframework.com/docs/theming/ */
 }
 
 @font-face {
-  font-family: Montserrat;
-  src: url(./Fonts/Montserrat-Light.ttf);
-}
-
-@font-face {
-  font-family: GoogleSans;
-  src: url(./Fonts/ProductSans-Light.ttf);
-}
-
-@font-face {
-  font-family: Catamaran;
-  src: url(./Fonts/Catamaran.ttf);
+  font-family: Proxima;
+  src: url(./Fonts/ProximaNova-Regular.otf);
 }
 
 /** Ionic CSS Variables **/
@@ -109,8 +102,8 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 
   /** configurations */
-  --ion-font-family: Poppins;
-  --icon-font-size: 12px;
+  --ion-font-family: Proxima;
+  --icon-font-size: 1.5em;
 }
 
 .show-back-button {
