@@ -1,5 +1,6 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonLabel, IonRow } from "@ionic/react";
 import { Component } from "react";
+import { MdDateRange, MdTimer } from "react-icons/md";
 import { CgCircleci } from "react-icons/cg";
 import { calendar } from "../utils";
 
@@ -7,7 +8,7 @@ export default class TopCard extends Component {
   
   public state: HomeState = {};
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     setInterval(() => {
       this.setState({
         curDate: calendar("LLL d, y"),
@@ -16,25 +17,26 @@ export default class TopCard extends Component {
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
-      <IonCard color="warning" className="top-card card-radius">
-        <CgCircleci />
-        <IonCardHeader className="center">
+      <IonCard color="warning" className="top-card">
+        <CgCircleci className="top-card-icon" />
+        <IonCardHeader className="ion-text-center">
           <IonCardSubtitle className="small">
-            Bible Study Outline:
+            Bible Study Outline
           </IonCardSubtitle>
           <IonLabel className="bold">A BALANCED CHURCH!</IonLabel>
         </IonCardHeader>
         <IonCardContent>
           <IonRow>
-            <IonCol size="12">
+            <IonCol size="6">
               <IonLabel>
-                <b>Date</b>: {this.state.curDate}
-                <br />
+                <MdDateRange /> {this.state.curDate}
               </IonLabel>
+            </IonCol>
+            <IonCol className="ion-text-right">
               <IonLabel>
-                <b>Time</b>: {this.state.curTime}
+                <MdTimer /> {this.state.curTime}
               </IonLabel>
             </IonCol>
           </IonRow>
