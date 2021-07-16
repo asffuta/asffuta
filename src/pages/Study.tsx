@@ -36,12 +36,12 @@ export default withHook(
       const body: JSX.Element[] = [];
       this.outline.slice(4, 9).forEach((outline, index) => {
         const content: JSX.Element[] = [];
-        outline?.text?.split("\n").forEach((aim, index) => {
+        outline?.text?.split("\n").forEach(aim => {
           content.push(<h3>{aim}</h3>);
         });
         body.push(
           <IonItem lines="none" hidden={!outline?.text}>
-            <IonLabel className="ion-text-wrap ion-text-justify">
+            <IonLabel className="ion-text-wrap">
               <h4>
                 <b>{this.headings[index]}</b>:
               </h4>
@@ -53,7 +53,10 @@ export default withHook(
       return (
         <IonPage>
           <IonContent id="studypage">
-            <StudyHeader title={" Study " + this.outline[0]?.text} />
+            <StudyHeader
+              title={" Study " + this.outline[0]?.text}
+              subtitle={this.outline[1]?.text}
+            />
             <IonList className="outline-list">
               <IonItem lines="none" className="outline-item">
                 <IonLabel className="ion-text-wrap">

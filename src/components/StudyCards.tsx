@@ -3,8 +3,10 @@ import {
   IonGrid,
   IonItem,
   IonLabel,
+  IonList,
   IonRow,
   IonSearchbar,
+  IonSkeletonText,
 } from "@ionic/react";
 import { Component } from "react";
 import StudyCard from "./StudyCard";
@@ -19,6 +21,18 @@ export default class StudyCards extends Component<{ query?: string }> {
   public studies: any[] = [];
 
   public state: { searchText?: string; studies?: JSX.Element[] } = {};
+
+  public get outline(): JSX.Element[] {
+    return this.studies
+      .filter(
+        (study) =>
+          (!this.state.searchText ||
+            study[1]._text.search(this.state.searchText)) > 0
+      )
+      .map((study: any) => (
+        <StudyCard key={study[0]._text} {...study} />
+      ));
+  }
 
   /**
    * This event dispatches once the component is mounted
@@ -67,15 +81,20 @@ export default class StudyCards extends Component<{ query?: string }> {
         </IonItem>
         <IonRow>
           <IonCol size="12" className="ion-no-padding">
-            {this.studies
-              .filter(
-                (study) =>
-                  (!this.state.searchText ||
-                    study[1]._text.search(this.state.searchText)) > 0
-              )
-              .map<JSX.Element>((study: any) => (
-                <StudyCard key={study[0]._text} {...study} />
-              ))}
+            {this.outline.length > 0 ? this.outline : [1, 2, 3].map(c => (
+              <IonList key={c} color="light" className="study-list">
+                <IonItem detail>
+                  <IonLabel className="ion-text-wrap">
+                    <h3>
+                      <b><IonSkeletonText style={{width: "35%"}} animated /></b>
+                    </h3>
+                    <h4><IonSkeletonText style={{width: "85%"}} animated /></h4>
+                    <h4><IonSkeletonText style={{width: "65%"}} animated /></h4>
+                    <h4><IonSkeletonText style={{width: "25%"}} animated /></h4>
+                  </IonLabel>
+                </IonItem>
+              </IonList>
+            ))}
           </IonCol>
         </IonRow>
         <div id="scroll"></div>
