@@ -3,13 +3,13 @@ import Header from "../components/Header";
 import TopCard from "../components/TopCard";
 import StudyCards from "../components/StudyCards";
 import HeaderMenu from "../components/HeaderMenu";
-import { IonContent, IonFab, IonFabButton, IonIcon, IonPage } from "@ionic/react";
-import "../theme/Home.css";
 import { CgDarkMode } from "react-icons/cg";
+import { IonContent, IonFab, IonFabButton, IonPage } from "@ionic/react";
 import { isDarkMode, setColorScheme } from "../utils";
+import "../theme/Home.css";
 
 export default class Home extends Component {
-  public render() {
+  public render(): JSX.Element {
     return (
       <IonPage>
         <IonContent id="homepage">
