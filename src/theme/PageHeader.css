@@ -5,6 +5,7 @@
 .subtitle {
   font-size: .7em;
   display: block;
+  text-overflow: ellipsis;
 }
 
 .fixed-header {
@@ -13,4 +14,9 @@
 
 .fixed-header + * {
   margin-top: 80px;
+}
+
+.more * {
+  color: var(--ion-color-dark);
+  font-size: var(--icon-font-size);
 }

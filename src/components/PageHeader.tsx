@@ -12,7 +12,7 @@ import { CgMore } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import "../theme/PageHeader.css";
 
-export default class PageHeader extends Component<{title: string, nofix?: boolean}> {
+export default class PageHeader extends Component<{title: string, subtitle?: string, nofix?: boolean}> {
   public render(): JSX.Element {
     return (
       <IonHeader className={!this.props.nofix ? "fixed-header" : ""}>
@@ -23,9 +23,9 @@ export default class PageHeader extends Component<{title: string, nofix?: boolea
                 <IonBackButton className="small" defaultHref="/home" />
               </IonCol>
               <IonCol className="ion-text-center">
-                <IonLabel>{this.props.title}</IonLabel>
+                <IonLabel className="bold">{this.props.title}</IonLabel>
                 <IonLabel className="subtitle">
-                  {this.props.title}
+                  {this.props?.subtitle}
                 </IonLabel>
               </IonCol>
               <IonCol className="ion-text-right ion-padding-end">
