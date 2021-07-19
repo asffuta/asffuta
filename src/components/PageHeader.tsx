@@ -28,7 +28,7 @@ export default class PageHeader extends Component<{title: string, subtitle?: str
                   {this.props?.subtitle}
                 </IonLabel>
               </IonCol>
-              <IonCol className="ion-text-right ion-padding-end">
+              <IonCol className="ion-text-right ion-padding-end" pull="0.4">
                 <Link to="#" className="more">
                   <CgMore />
                 </Link>
