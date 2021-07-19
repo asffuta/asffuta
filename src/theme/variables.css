@@ -278,10 +278,14 @@ a {
   vertical-align: middle;
 }
 
+.menu-list {
+  padding-top: 1em;
+}
+
 .menu-list ion-item {
   display: block;
   border-radius: .5em;
-  margin: .3em 1em;
+  margin: .3em 0;
   color: var(--ion-color-dark);
 }
 

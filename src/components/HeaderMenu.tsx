@@ -26,14 +26,14 @@ import ASFLogo from "../theme/images/logo.png";
 export default class HeaderMenu extends Component {
   public render(): JSX.Element {
     return (
-      <IonMenu contentId="homepage">
+      <IonMenu contentId="homepage" className="menu-list">
         <IonHeader>
           <IonToolbar color="dark">
             <IonImg src={ASFLogo} className="logo" />
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <IonItemGroup className="menu-list">
+          <IonItemGroup>
             <IonItem className="small" href="/" lines="none">
               <CgList />
               <IonLabel>&nbsp; Outline</IonLabel>
@@ -55,7 +55,7 @@ export default class HeaderMenu extends Component {
               <IonLabel>&nbsp; Share App</IonLabel>
             </IonItem>
           </IonItemGroup>
-          <IonItemGroup slot="end">
+          <IonItemGroup>
             <IonListHeader>
               <IonLabel>We are Social!</IonLabel>
             </IonListHeader>
