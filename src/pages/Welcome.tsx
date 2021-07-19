@@ -17,8 +17,10 @@ import {
 import { Component, createRef } from "react";
 import { CgArrowRightO, CgLinear } from "react-icons/cg";
 import { Link, Redirect } from "react-router-dom";
-import WelcomeSvg1 from "../theme/Welcome01.svg";
-import WelcomeSvg2 from "../theme/Welcome02.svg";
+import WelcomeSvg1 from "../theme/images/biblotheque.svg";
+import WelcomeSvg2 from "../theme/images/darkmode.svg";
+import WelcomeSvg3 from "../theme/images/darkmode_theme.svg";
+import WelcomeSvg4 from "../theme/images/feedback.svg";
 import "../theme/Welcome.css";
 
 export default class Welcome extends Component {
@@ -27,13 +29,25 @@ export default class Welcome extends Component {
   public slides = [
     {
       image: WelcomeSvg1,
-      text: "One Bible Study app for Asfites...",
+      text: "New updates & additions to Asffuta Bible Study App",
       button: "Next",
       link: "#",
     },
     {
       image: WelcomeSvg2,
-      text: "Open discussion with intuitive design...",
+      text: "Better interactive dark mode floating button...",
+      button: "Next",
+      link: "#",
+    },
+    {
+      image: WelcomeSvg3,
+      text: "Newly updated retina friendly dark mode design...",
+      button: "Next",
+      link: "#",
+    },
+    {
+      image: WelcomeSvg4,
+      text: "User feedback now accepted. Note: requires internet!",
       button: "Get Started",
       link: "/home",
     },
@@ -72,7 +86,7 @@ export default class Welcome extends Component {
                         swipe.slideNext();
                       }}
                     >
-                      <IonButton color="warning">
+                      <IonButton className="ion-text-uppercase" color="warning">
                         {slide.button}
                         <CgArrowRightO />
                       </IonButton>
