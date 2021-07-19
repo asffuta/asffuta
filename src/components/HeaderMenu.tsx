@@ -3,14 +3,24 @@ import {
   IonToolbar,
   IonContent,
   IonItem,
-  IonList,
   IonMenu,
   IonImg,
   IonLabel,
-  IonListHeader
+  IonListHeader,
+  IonItemGroup,
 } from "@ionic/react";
 import { Component } from "react";
-import { CgFacebook, CgInstagram, CgTwitter } from "react-icons/cg";
+import {
+  CgComment,
+  CgCreditCard,
+  CgFacebook,
+  CgInstagram,
+  CgList,
+  CgRemote,
+  CgShare,
+  CgTwitter,
+} from "react-icons/cg";
+import { Link } from "react-router-dom";
 import ASFLogo from "../theme/images/logo.png";
 
 export default class HeaderMenu extends Component {
@@ -23,14 +33,31 @@ export default class HeaderMenu extends Component {
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <IonList>
-            <IonItem className="small" href="/feedback">
-              <IonLabel>Feedback</IonLabel>
+          <IonItemGroup className="menu-list">
+            <IonItem className="small" href="/" lines="none">
+              <CgList />
+              <IonLabel>&nbsp; Outline</IonLabel>
             </IonItem>
-          </IonList>
-          <IonList>
+            <IonItem className="small" href="https://mixlr.com/asffuta" lines="none">
+              <CgRemote />
+              <IonLabel>&nbsp; Live Service</IonLabel>
+            </IonItem>
+            <IonItem className="small" href="/feedback" lines="none">
+              <CgComment />
+              <IonLabel>&nbsp; Feedback</IonLabel>
+            </IonItem>
+            <IonItem className="small" lines="none">
+              <CgCreditCard />
+              <IonLabel>&nbsp; Donations</IonLabel>
+            </IonItem>
+            <IonItem className="small" lines="none">
+              <CgShare />
+              <IonLabel>&nbsp; Share App</IonLabel>
+            </IonItem>
+          </IonItemGroup>
+          <IonItemGroup slot="end">
             <IonListHeader>
-              <IonLabel>Social Media Handles</IonLabel>
+              <IonLabel>We are Social!</IonLabel>
             </IonListHeader>
             <IonItem className="small" href="https://facebook.com/asffutang">
               <CgFacebook />
@@ -44,7 +71,7 @@ export default class HeaderMenu extends Component {
               <CgInstagram />
               <IonLabel> &nbsp; Instagram </IonLabel>
             </IonItem>
-          </IonList>
+          </IonItemGroup>
         </IonContent>
       </IonMenu>
     );
