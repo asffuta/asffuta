@@ -1,8 +1,7 @@
-import { IonAlert, IonSkeletonText } from "@ionic/react";
+import { IonAlert } from "@ionic/react";
 import { Component } from "react";
-import { Network } from "@ionic-native/network";
 import PageHeader from "../components/PageHeader";
-import { connected } from "process";
+import $ from "jquery";
 
 /**
  * Feedback page Component
@@ -12,12 +11,37 @@ import { connected } from "process";
  * @extends {Component}
  */
 export default class Feedback extends Component {
-  public connected = true;
+  /**
+   * The feedback google doc url
+   *
+   * @memberof Feedback
+   */
+  public docURL =
+    "https://docs.google.com/forms/d/e/1FAIpQLSeCm7to2DPgqnM6U2nF7-T2Aamld1m5Lv7zm-W6JN0wLLb0GQ/viewform?embedded=true";
 
+  /**
+   * The Feedback page's state
+   *
+   * @type {{ connected: boolean }}
+   * @memberof Feedback
+   */
+  public state: { connected: boolean } = { connected: true };
+
+  /**
+   * Perform an online check test every 750ms to ensure user is online
+   *
+   * @memberof Feedback
+   */
   public componentDidMount(): void {
-    Network.onChange().subscribe((type) => {
-      this.connected = (type === "connected");
-    });
+    setInterval(() => {
+      $.getJSON("https://jsonp.afeld.me/?callback=?&url=" + this.docURL)
+        .done(() => {
+          this.setState({ connected: true });
+        })
+        .catch(() => {
+          this.setState({ connected: false });
+        });
+    }, 750);
   }
 
   public render(): JSX.Element {
@@ -25,17 +49,26 @@ export default class Feedback extends Component {
       <>
         <PageHeader title="Feedback" nofix={true} />
         <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSeCm7to2DPgqnM6U2nF7-T2Aamld1m5Lv7zm-W6JN0wLLb0GQ/viewform?embedded=true"
+          src={this.docURL}
           width={window.innerWidth}
           height={window.innerHeight}
           frameBorder={0}
           marginHeight={0}
           marginWidth={0}
-          hidden={!this.connected}
-        >
-          <IonSkeletonText />
-        </iframe>
-        <IonAlert isOpen={!this.connected} message="You need internet connection to access this page!" />
+          hidden={!this.state.connected}
+        />
+        <IonAlert
+          isOpen={!this.state.connected}
+          message="You need internet connection to access this page!"
+          buttons={[
+            {
+              text: "View Outlines",
+              handler: () => {
+                location.pathname = "/home";
+              },
+            },
+          ]}
+        />
       </>
     );
   }

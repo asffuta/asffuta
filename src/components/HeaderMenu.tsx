@@ -20,7 +20,6 @@ import {
   CgShare,
   CgTwitter,
 } from "react-icons/cg";
-import { Link } from "react-router-dom";
 import ASFLogo from "../theme/images/logo.png";
 
 export default class HeaderMenu extends Component {
