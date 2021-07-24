@@ -8,6 +8,7 @@ import {
   IonLabel,
   IonListHeader,
   IonItemGroup,
+  IonPopover,
 } from "@ionic/react";
 import { Component } from "react";
 import {
@@ -20,15 +21,22 @@ import {
   CgShare,
   CgTwitter,
 } from "react-icons/cg";
-import ASFLogo from "../theme/images/logo.png";
+import SemesterTheme from "../theme/images/semester_theme.jpg";
+import AccountsBanner from "../theme/images/accounts.jpg";
 
 export default class HeaderMenu extends Component {
+  public state: { showBanner: boolean } = { showBanner: false }
+  
+  public toggleBanner(): void {
+    this.setState({ showBanner: !this.state.showBanner });
+  }
+
   public render(): JSX.Element {
     return (
       <IonMenu contentId="homepage" className="menu-list">
         <IonHeader>
           <IonToolbar color="dark">
-            <IonImg src={ASFLogo} className="logo" />
+            <IonImg src={SemesterTheme} className="logo" />
           </IonToolbar>
         </IonHeader>
         <IonContent>
@@ -45,11 +53,11 @@ export default class HeaderMenu extends Component {
               <CgComment />
               <IonLabel>&nbsp; Feedback</IonLabel>
             </IonItem>
-            <IonItem className="small" lines="none">
+            <IonItem className="small" lines="none" onClick={this.toggleBanner.bind(this)}>
               <CgCreditCard />
               <IonLabel>&nbsp; Donations</IonLabel>
             </IonItem>
-            <IonItem className="small" lines="none">
+            <IonItem className="small" href="https://api.whatsapp.com/send/?text=Download and install ASFFUTA bible study app at https://bit.ly/asffuta_biblestudy" lines="none">
               <CgShare />
               <IonLabel>&nbsp; Share App</IonLabel>
             </IonItem>
@@ -72,6 +80,9 @@ export default class HeaderMenu extends Component {
             </IonItem>
           </IonItemGroup>
         </IonContent>
+        <IonPopover isOpen={this.state.showBanner}>
+          <img src={AccountsBanner}/>
+        </IonPopover>
       </IonMenu>
     );
   }
