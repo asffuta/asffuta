@@ -8,9 +8,10 @@ import {
   IonCol,
 } from "@ionic/react";
 import { Component } from "react";
-import { CgMore } from "react-icons/cg";
+import { CgDarkMode } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import "../theme/PageHeader.css";
+import { setColorScheme } from "../utils";
 
 export default class PageHeader extends Component<{title: string, subtitle?: string, nofix?: boolean}> {
   public render(): JSX.Element {
@@ -29,8 +30,8 @@ export default class PageHeader extends Component<{title: string, subtitle?: str
                 </IonLabel>
               </IonCol>
               <IonCol className="ion-text-right ion-padding-end" pull="0.4">
-                <Link to="#" className="more">
-                  <CgMore />
+                <Link to="#" onClick={setColorScheme} className="more">
+                  <CgDarkMode />
                 </Link>
               </IonCol>
             </IonRow>

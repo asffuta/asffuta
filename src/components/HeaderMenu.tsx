@@ -36,7 +36,7 @@ export default class HeaderMenu extends Component {
       <IonMenu contentId="homepage" className="menu-list">
         <IonHeader>
           <IonToolbar color="dark">
-            <IonImg src={SemesterTheme} className="logo" />
+            <IonImg src={SemesterTheme} />
           </IonToolbar>
         </IonHeader>
         <IonContent>

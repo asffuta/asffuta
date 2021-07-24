@@ -4,11 +4,11 @@ import {
   IonGrid,
   IonCol,
   IonMenuToggle,
-  IonLabel,
 } from "@ionic/react";
 import { Component } from "react";
 import { CgMenuLeftAlt, CgShare } from "react-icons/cg";
 import { Plugins } from "@capacitor/core";
+import { Link } from "react-router-dom";
 
 export default class Header extends Component {
   public render(): JSX.Element {
@@ -24,9 +24,9 @@ export default class Header extends Component {
           </IonGrid>
           <IonGrid slot="end">
             <IonCol pull="1">
-              <IonLabel onClick={this.shareApp}>
+              <Link to="https://api.whatsapp.com/send/?text=Download and install ASFFUTA bible study app at https://bit.ly/asffuta_biblestudy" onClick={this.shareApp}>
                 <CgShare size={20} />
-              </IonLabel>
+              </Link>
             </IonCol>
           </IonGrid>
         </IonToolbar>
